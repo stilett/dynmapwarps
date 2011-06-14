@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="dynmap-warps" default="all">
+  
+  
+  <property file="dynmap-warps.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.zip"/>
+    <include name="*.war"/>
+    <include name="*.egg"/>
+    <include name="*.ear"/>
+    <include name="*.swc"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <include name="**/?*.properties"/>
+    <include name="**/?*.xml"/>
+    <include name="**/?*.gif"/>
+    <include name="**/?*.png"/>
+    <include name="**/?*.jpeg"/>
+    <include name="**/?*.jpg"/>
+    <include name="**/?*.html"/>
+    <include name="**/?*.dtd"/>
+    <include name="**/?*.tld"/>
+    <include name="**/?*.ftl"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.6" value="${jdk.home.1.6}/bin"/>
+  <path id="jdk.classpath.1.6">
+    <fileset dir="${jdk.home.1.6}">
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/alt-string.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/alt-rt.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.6}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.6}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.6"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.bukkit.classpath">
+    <pathelement location="${basedir}/../../minecraft/plugins/bukkit-0.0.1-SNAPSHOT.jar"/>
+  </path>
+  
+  <path id="library.dynmap.classpath">
+    <pathelement location="${basedir}/../../minecraft/plugins/dynmap.jar"/>
+  </path>
+  
+  <path id="library.warpz0r.classpath">
+    <pathelement location="${basedir}/../../minecraft/plugins/Warpz0r.jar"/>
+  </path>
+  
+  
+  <!-- Global Libraries -->
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module dynmap-warps -->
+  
+  <dirname property="module.dynmap-warps.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.dynmap-warps" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.dynmap-warps" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.dynmap-warps" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.dynmap-warps" value="${compiler.args}"/>
+  
+  <property name="dynmap-warps.output.dir" value="${module.dynmap-warps.basedir}/out/production/dynmap-warps"/>
+  <property name="dynmap-warps.testoutput.dir" value="${module.dynmap-warps.basedir}/out/test/dynmap-warps"/>
+  
+  <path id="dynmap-warps.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="dynmap-warps.module.production.classpath">
+    <path refid="${module.jdk.classpath.dynmap-warps}"/>
+    <path refid="library.bukkit.classpath"/>
+    <path refid="library.warpz0r.classpath"/>
+    <path refid="library.dynmap.classpath"/>
+  </path>
+  
+  <path id="dynmap-warps.runtime.production.module.classpath">
+    <pathelement location="${dynmap-warps.output.dir}"/>
+    <path refid="library.bukkit.classpath"/>
+    <path refid="library.warpz0r.classpath"/>
+    <path refid="library.dynmap.classpath"/>
+  </path>
+  
+  <path id="dynmap-warps.module.classpath">
+    <path refid="${module.jdk.classpath.dynmap-warps}"/>
+    <pathelement location="${dynmap-warps.output.dir}"/>
+    <path refid="library.bukkit.classpath"/>
+    <path refid="library.warpz0r.classpath"/>
+    <path refid="library.dynmap.classpath"/>
+  </path>
+  
+  <path id="dynmap-warps.runtime.module.classpath">
+    <pathelement location="${dynmap-warps.testoutput.dir}"/>
+    <pathelement location="${dynmap-warps.output.dir}"/>
+    <path refid="library.bukkit.classpath"/>
+    <path refid="library.warpz0r.classpath"/>
+    <path refid="library.dynmap.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.dynmap-warps">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.dynmap-warps">
+    <patternset refid="excluded.from.module.dynmap-warps"/>
+  </patternset>
+  
+  <path id="dynmap-warps.module.sourcepath">
+    <dirset dir="${module.dynmap-warps.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.dynmap-warps" depends="compile.module.dynmap-warps.production,compile.module.dynmap-warps.tests" description="Compile module dynmap-warps"/>
+  
+  <target name="compile.module.dynmap-warps.production" description="Compile module dynmap-warps; production classes">
+    <mkdir dir="${dynmap-warps.output.dir}"/>
+    <javac destdir="${dynmap-warps.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.dynmap-warps}/javac">
+      <compilerarg line="${compiler.args.dynmap-warps}"/>
+      <bootclasspath refid="dynmap-warps.module.bootclasspath"/>
+      <classpath refid="dynmap-warps.module.production.classpath"/>
+      <src refid="dynmap-warps.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.dynmap-warps"/>
+    </javac>
+    
+    <copy todir="${dynmap-warps.output.dir}">
+      <fileset dir="${module.dynmap-warps.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.dynmap-warps.tests" depends="compile.module.dynmap-warps.production" description="compile module dynmap-warps; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.dynmap-warps" description="cleanup module">
+    <delete dir="${dynmap-warps.output.dir}"/>
+    <delete dir="${dynmap-warps.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.dynmap-warps" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.dynmap-warps" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.dynmapwarps" value="${basedir}/../../minecraft/bukkit803/plugins"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.DynmapWarps.jar" value="${artifacts.temp.dir}/DynmapWarps.jar"/>
+  </target>
+  
+  <target name="artifact.dynmapwarps" depends="init.artifacts, compile.module.dynmap-warps" description="Build &apos;DynmapWarps&apos; artifact">
+    <property name="artifact.temp.output.dynmapwarps" value="${artifacts.temp.dir}/DynmapWarps"/>
+    <mkdir dir="${artifact.temp.output.dynmapwarps}"/>
+    <jar destfile="${temp.jar.path.DynmapWarps.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${dynmap-warps.output.dir}"/>
+      <zipfileset file="${basedir}/src/plugin.yml"/>
+    </jar>
+    <copy file="${temp.jar.path.DynmapWarps.jar}" tofile="${artifact.temp.output.dynmapwarps}/DynmapWarps.jar"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.dynmapwarps" description="Build all artifacts">
+    <mkdir dir="${artifact.output.dynmapwarps}"/>
+    <copy todir="${artifact.output.dynmapwarps}">
+      <fileset dir="${artifact.temp.output.dynmapwarps}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

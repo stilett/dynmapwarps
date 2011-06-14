@@ -1,0 +1,5 @@
+name: DynmapWarps
+main: cz.sychrovnet.dynmapwarps.DynmapWarps
+version: 0.1
+depends:
+    - dynmap
