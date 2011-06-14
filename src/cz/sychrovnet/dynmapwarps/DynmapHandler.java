@@ -25,6 +25,9 @@ import static org.dynmap.JSONUtils.*;
 
 
 /**
+ * Dynmap HTTP server handler. It provides list of marks (homes and spawns) to the client-side JS script.
+ * The list in encoded in JSON.
+ *
  * User: stilett
  * Date: 6/10/11
  * Time: 1:12 PM

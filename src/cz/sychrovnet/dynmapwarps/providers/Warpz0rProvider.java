@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Adds Warpoz0r support. Warpz0r homes and warps can be exported.
+ *
  * User: stilett
  * Date: 6/10/11
  * Time: 1:57 PM

@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Main plugin class plugin. It creates connections with dynmap and Warpz0r plugins.
+ * Plugin integration with the other plugins needs some improvements.
+ *
  * User: stilett
  * Date: 6/10/11
  * Time: 12:58 PM
